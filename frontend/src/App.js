@@ -22,6 +22,7 @@ function App({ children }) {
   const [isCam, setCam] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [img, setImg] = useState(true);
+  const [dark, setDark] = useState(false);
 
   const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
     useAuth0();
@@ -48,6 +49,8 @@ function App({ children }) {
         setSelectedImage,
         img,
         setImg,
+        dark,
+        setDark,
       }}
     >
       <Router>
@@ -56,8 +59,8 @@ function App({ children }) {
         ) : (
           <div className="relative min-h-screen text-white bg-custom-gradient">
             {/* Background particle animation */}
-            <div className="fixed top-0 left-0 w-full h-full -z-10">
-              <ParticleRing />
+            <div className="fixed top-0 left-0 w-full h-full -z-10 bg-black">
+              {dark && <ParticleRing />}
             </div>
 
             {/* Foreground content */}

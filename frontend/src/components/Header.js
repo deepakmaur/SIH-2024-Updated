@@ -6,8 +6,7 @@ import { VoiceControl } from "./VoiceControl";
 import LinksSection from "./Link";
 
 const Header = () => {
-  // const { isAuthenticated, logout, loginWithRedirect } =
-  //   useContext(UserContext);
+  const { dark, setDark } = useContext(UserContext);
   const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
   return (
     <header className="fixed top-0 left-0 right-0 bg-custom-gradient text-white p-6 z-50 flex justify-between items-center shadow-none h-16">
@@ -36,6 +35,14 @@ const Header = () => {
             Log Out
           </button>
         )}
+        <button
+          onClick={() => setDark(!dark)}
+          className={`px-4 py-2 rounded-lg font-semibold text-white ${
+            dark ? "bg-gray-500" : "bg-red-500"
+          }`}
+        >
+          {dark ? "Dark" : "Light"}
+        </button>
       </nav>
     </header>
   );
